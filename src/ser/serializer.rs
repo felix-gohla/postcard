@@ -227,6 +227,7 @@ where
         Ok(self)
     }
 
+    #[cfg(not(any(feature = "use-std", feature = "alloc")))]
     fn collect_str<T: ?Sized>(self, _value: &T) -> Result<Self::Ok>
     where
         T: core::fmt::Display,
@@ -337,7 +338,7 @@ where
     }
 
     fn end(self) -> Result<()> {
-      Ok(())
+        Ok(())
     }
 }
 
